@@ -10,35 +10,42 @@
 
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <label>
-        First Name:
-        <input type="text" formControlName="firstName">
-      </label>
-    
-      <label>
-        Last Name:
-        <input type="text" formControlName="lastName">
-      </label>
+    First Name:
+    <input type="text" formControlName="firstName">
+    </label>
 
-      <div formGroupName="address">
-        <label>
-            Street:
-            <input type="text" formControlName="street">
-          </label>
-        
-          <label>
-            City:
-            <input type="text" formControlName="city">
-          </label>
-          
-          <label>
-            State:
-            <input type="text" formControlName="state">
-          </label>
-        
-          <label>
-            Zip Code:
-            <input type="text" formControlName="zip">
-          </label>
-      </div>
-      <button type="submit">Submit</button>
+    <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+    </label>
+
+    <div formArrayName="addressArray">
+        <div *ngFor="let addressItem of profileForm.get('addressArray').controls; let i=index">
+            <!-- The repeated Address template -->
+            <div [formGroupName]="i">
+                <label>
+                Street:
+                <input type="text" formControlName="street">
+                </label>
+            
+                <label>
+                City:
+                <input type="text" formControlName="city">
+                </label>
+                
+                <label>
+                State:
+                <input type="text" formControlName="state">
+                </label>
+            
+                <label>
+                Zip Code:
+                <input type="text" formControlName="zip">
+                </label>
+              </div>
+        </div>
+        <button (click)="addAddress()">Add Address</button>
+    </div>
+
+    <button type="submit">Submit</button>
 </form>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -9,19 +9,29 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ReactiveFormComponent implements OnInit {
   singlefield=new FormControl('');
+  addressArray:FormArray;
 
-  profileForm=new FormGroup({
-    firstName:new FormControl(''),
-    lastName:new FormControl(''),
-    address:new FormGroup({
-      street:new FormControl(''),
-      city:new FormControl(''),
-      state: new FormControl(''),
-      zip:new FormControl('')
-    })
+  profileForm=this.formBuilder.group({
+    firstName:'',
+    lastName:'',
+    addressArray:this.formBuilder.array([ this.createAddress() ])
   });
 
-  constructor() { }
+  createAddress():FormGroup{
+    return this.formBuilder.group({
+      street:'',
+        city:'',
+        state:'',
+        zip:''
+    })
+  }
+
+  addAddress(){
+    this.addressArray=this.profileForm.get('addressArray') as FormArray;  //initialtize the addressArray object otherwise undefined error generate
+    this.addressArray.push(this.createAddress());
+  }
+
+  constructor(private formBuilder:FormBuilder) { }
 
   ngOnInit() {
     
