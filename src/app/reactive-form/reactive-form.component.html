@@ -1,0 +1,21 @@
+<div>
+    <label for="singlefield">Single Field</label>
+    <input type="text" id="singlefield" bind-formControl="singlefield">
+</div>
+
+{{singlefield.value}}
+
+<button (click)="updateField()">Update</button>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label>
+        First Name:
+        <input type="text" formControlName="firstName">
+      </label>
+    
+      <label>
+        Last Name:
+        <input type="text" formControlName="lastName">
+      </label>
+      <button type="submit">Submit</button>
+</form>
