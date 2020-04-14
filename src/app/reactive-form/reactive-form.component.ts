@@ -9,11 +9,18 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ReactiveFormComponent implements OnInit {
   singlefield=new FormControl('');
-  
+
   profileForm=new FormGroup({
     firstName:new FormControl(''),
-    lastName:new FormControl('')
+    lastName:new FormControl(''),
+    address:new FormGroup({
+      street:new FormControl(''),
+      city:new FormControl(''),
+      state: new FormControl(''),
+      zip:new FormControl('')
+    })
   });
+
   constructor() { }
 
   ngOnInit() {

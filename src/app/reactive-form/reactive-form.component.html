@@ -1,3 +1,4 @@
+<!-- reactive-form.component.html-->
 <div>
     <label for="singlefield">Single Field</label>
     <input type="text" id="singlefield" bind-formControl="singlefield">
@@ -17,5 +18,27 @@
         Last Name:
         <input type="text" formControlName="lastName">
       </label>
+
+      <div formGroupName="address">
+        <label>
+            Street:
+            <input type="text" formControlName="street">
+          </label>
+        
+          <label>
+            City:
+            <input type="text" formControlName="city">
+          </label>
+          
+          <label>
+            State:
+            <input type="text" formControlName="state">
+          </label>
+        
+          <label>
+            Zip Code:
+            <input type="text" formControlName="zip">
+          </label>
+      </div>
       <button type="submit">Submit</button>
 </form>
