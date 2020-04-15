@@ -17,8 +17,11 @@ export class ChildComponent implements OnChanges {
 
   constructor() { }
 
-  ngOnChanges(changes:SimpleChanges) {
-    console.log(changes);
+  ngOnChanges(items:SimpleChanges) {
+    for(let itemKey in items){
+      let item=items[itemKey];
+      console.log(item.currentValue);
+    }
   }
   
   sendResponse(){
