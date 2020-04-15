@@ -10,11 +10,15 @@ export class ChildComponent implements OnInit {
   @Input()
   childVariable:String;
 
+  @Output()
+  childResponse=new EventEmitter<String>();
 
   constructor() { }
 
   ngOnInit() {
   }
   
-
+  sendResponse(){
+    this.childResponse.emit("Yes Papa, I am fine ? Thank you.");
+  }
 }

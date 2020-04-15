@@ -1,2 +1,3 @@
 <p>parent works!</p>
-<app-child [childVariable]="parentVariable"></app-child>
+<app-child [childVariable]="parentVariable" (childResponse)="getResponse($event)"></app-child>
+{{response}}
