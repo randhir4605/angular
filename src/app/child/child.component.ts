@@ -7,8 +7,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
 
+  _childVariable:String;
+
   @Input()
-  childVariable:String;
+  set childVariable(message:String){
+    this._childVariable=message+" modified";
+  }
+  
 
   @Output()
   childResponse=new EventEmitter<String>();
