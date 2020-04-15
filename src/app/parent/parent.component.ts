@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentComponent implements OnInit {
   parentVariable="Hello Beta! How are You ?";
+  parentVariable2="If you need money let me know.";
   response:String;
   constructor() { }
 
   ngOnInit() {
   }
 
-  getResponse(response:String){
+  saveResponse(response:String){
     this.response=response;
   }
 }

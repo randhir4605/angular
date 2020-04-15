@@ -1,26 +1,24 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
-export class ChildComponent implements OnInit {
-
-  _childVariable:String;
+export class ChildComponent implements OnChanges {
 
   @Input()
-  set childVariable(message:String){
-    this._childVariable=message+" modified";
-  }
-  
+  childVariable:String;  
+  @Input()
+  childVariable2:String;
 
   @Output()
   childResponse=new EventEmitter<String>();
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(changes:SimpleChanges) {
+    console.log(changes);
   }
   
   sendResponse(){
