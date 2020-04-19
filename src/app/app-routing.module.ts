@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path:'',
     component:ParentComponent
+  },
+  {
+    path:'emp',
+    loadChildren:()=>import('./feature1/feature1.module').then(m=>m.Feature1Module)
   }
 ];
 
