@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "formdemo"
+    }
+  },
+  "defaultProject": "formdemo",
+  "cli": {
+    "analytics": false
+  }
 }
