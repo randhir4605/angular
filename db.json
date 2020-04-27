@@ -1,0 +1,14 @@
+{
+    "employee":[
+        {
+            "id":1,
+            "fname":"randhir",
+            "lname":"raj"
+        },
+        {
+            "id":2,
+            "fname":"rajesh",
+            "lname":"sah"
+        }
+    ]
+}

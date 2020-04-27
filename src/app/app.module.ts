@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ChildComponent } from './child/child.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
