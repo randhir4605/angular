@@ -12,4 +12,8 @@ export class FeatureService {
   getEmployees(){
     return this.http.get("http://localhost:3000/employee"); 
   }
+
+  getEmployeeById(id:string){
+    return this.http.get("http://localhost:3000/employee/"+id);
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FeatureService } from '../feature.service';
 import { Employee } from '../employee.model';
+import { Feature1RoutingModule } from '../feature1-routing.module';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -9,15 +11,24 @@ import { Employee } from '../employee.model';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(private employeeServie:FeatureService) { }
+  employees:Employee[];
+  
+
+  constructor(private employeeService:FeatureService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
+    this.getEmployees();
   }
 
   getEmployees(){
-    this.employeeServie.getEmployees().subscribe((data:Employee)=>{
+    this.employeeService.getEmployees().subscribe((data:Employee[])=>{
       console.log(data)
+      this.employees=data;
     });
   }
 
+  navigateToDetail(id:string){
+    // this.router.navigate(['detail'],{relativeTo:this.route});
+    this.router.navigate(['detail'],{relativeTo:this.route,queryParams:{id:id}});
+  }
 }

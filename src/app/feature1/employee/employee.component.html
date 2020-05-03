@@ -1,1 +1,5 @@
-<button (click)="getEmployees()">Get Employee</button>
+<div *ngFor="let employee of employees" style="display: block; border: 1px solid #ababab; padding: 10px; margin: 10px; width: 50%;" >
+    <div>ID : <span (click)="navigateToDetail(employee.id)" style="cursor:pointer">{{employee.id}}</span></div>
+    <div>First Name : {{employee.fname}}</div>
+    <div>Last Name : {{employee.lname}}</div>
+</div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FeatureService } from '../feature.service';
+import { Employee } from '../employee.model';
 
 @Component({
   selector: 'app-employee-detail',
@@ -8,7 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmployeeDetailComponent implements OnInit {
 
-  constructor(public route:ActivatedRoute) { }
+  private id:string;
+  private employee:Employee;
+
+  constructor(public route:ActivatedRoute,public employeeService:FeatureService) { }
 
   ngOnInit(): void {
     this.route.queryParams.forEach(param=>{
@@ -20,8 +25,16 @@ export class EmployeeDetailComponent implements OnInit {
       for(let key in param){
         console.log(key);
         console.log(param[key]);
-      }
-    });
-  }
 
+        if("id"===key){
+          this.id=param[key];
+        }
+      }
+      console.log(this.id);
+      this.employeeService.getEmployeeById(this.id).subscribe((data:Employee)=>{
+        console.log(data)
+        this.employee=data;
+      });
+    });
+  }  
 }
